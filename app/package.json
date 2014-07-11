@@ -1,0 +1,9 @@
+﻿{
+  "name": "RedJade Surveys",
+  "main": "index.html",
+  "window": {
+    "frame": false,
+	"toolbar": false,
+	"fullscreen": true
+  }
+}
