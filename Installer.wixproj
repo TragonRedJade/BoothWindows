@@ -35,11 +35,19 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app" />
+    <Folder Include="app\js\" />
     <Folder Include="_webkit" />
     <Folder Include="_build" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\index.html" />
+    <Content Include="app\js\main.js" />
+    <Content Include="app\package.json" />
+    <Content Include="_build\app.nw" />
+    <Content Include="_build\logo.ico" />
+    <Content Include="_build\nw.exe" />
+    <Content Include="_build\readme.txt" />
+    <Content Include="_webkit\app.nw" />
     <Content Include="_webkit\ffmpegsumo.dll" />
     <Content Include="_webkit\icudt.dll" />
     <Content Include="_webkit\libEGL.dll" />
@@ -48,9 +56,11 @@
     <Content Include="_webkit\nw.pak" />
     <Content Include="_webkit\nwsnapshot.exe" />
     <Content Include="_build\app.exe" />
-    <Content Include="_build\app.nw" />
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
+  <PropertyGroup>
+    <PreBuildEvent />
+  </PropertyGroup>
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.
 	Other similar extension points exist, see Wix.targets.

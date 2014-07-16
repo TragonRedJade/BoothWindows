@@ -17,18 +17,18 @@ var updateIFrameSrc = function(key){
 var fs = require('fs');
 fs.readFile('../appkey.txt', 'utf-8', function (error, contents) {
 	if(!contents){
-		alert("no contents");
+		console.log("no contents");
 		var new_guid = guid();
 		fs.writeFile('../appkey.txt', new_guid, function(err) {
 			if(err) {
-					alert(err);
+					console.log(err);
 			} else {
-					alert("success on write");
+					console.log("success on write");
 			}
 		});
 		updateIFrameSrc(new_guid);
 	}else{
-		alert(contents);
+		console.log(contents);
 		updateIFrameSrc(contents);
 	}
 });
