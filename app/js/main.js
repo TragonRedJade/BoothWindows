@@ -11,7 +11,7 @@ var guid = (function() {
 })();
 
 var updateIFrameSrc = function(key){
-	document.getElementById("my_iframe").src = "http://surveys.redjade.net?appkey="+key+"";
+	document.getElementById("my_iframe").src = "http://surveys.redjade-stage.net?appkey="+key+"";
 }
 
 var fs = require('fs');
