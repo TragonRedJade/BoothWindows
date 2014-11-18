@@ -1,4 +1,11 @@
-var guid = (function() {
+var handleError = function (message) {
+    var body = document.body || document.getElementsByTagName('body')[0],
+    elem = document.createElement('h1');
+    elem.innerHTML = message;
+    body.insertBefore(elem, body.childNodes[0]);
+}
+
+var guid = (function () {
 	function s4() {
 		return Math.floor((1 + Math.random()) * 0x10000)
 							 .toString(16)
@@ -15,13 +22,32 @@ var updateIFrameSrc = function(key){
 }
 
 var fs = require('fs');
-fs.readFile('../appkey.txt', 'utf-8', function (error, contents) {
+var path = require('path');
+var os = require("os");
+
+if (os.platform() == "win32") {
+    var root_drive = (os.platform == "win32") ? process.cwd().split(path.sep)[0] : "/";
+    var key_file_path = root_drive + "ProgramData/RedJade/appkey.txt";
+} 
+else {
+    var key_file_path = path.dirname(process.execPath).replace(/\\/g, "/") + "/appkey.txt";    
+}
+
+
+
+//window.onload=function() {
+//    handleError(os.platform());
+//    handleError(key_file_path);
+//}
+
+fs.readFile(key_file_path, 'utf-8', function (error, contents) {
 	if(!contents){
 		console.log("no contents");
 		var new_guid = guid();
-		fs.writeFile('../appkey.txt', new_guid, function(err) {
+		fs.writeFile(key_file_path, new_guid, function (err) {
 			if(err) {
-					console.log(err);
+			    console.log(err);
+			    handleError(err);
 			} else {
 					console.log("success on write");
 			}
@@ -32,3 +58,4 @@ fs.readFile('../appkey.txt', 'utf-8', function (error, contents) {
 		updateIFrameSrc(contents);
 	}
 });
+
