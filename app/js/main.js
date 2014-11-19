@@ -1,3 +1,9 @@
+var app_url = "http://surveys.redjade-stage.net";
+var fs = require('fs');
+var path = require('path');
+var os = require("os");
+
+
 var handleError = function (message) {
     var body = document.body || document.getElementsByTagName('body')[0],
     elem = document.createElement('h1');
@@ -17,13 +23,11 @@ var guid = (function () {
 	};
 })();
 
-var updateIFrameSrc = function(key){
-	document.getElementById("my_iframe").src = "http://surveys.redjade-stage.net?appkey="+key+"";
+var updateIFrameSrc = function (settings) {
+	document.getElementById("my_iframe").src = settings.app_url+"?appkey="+settings.app_key+"";
 }
 
-var fs = require('fs');
-var path = require('path');
-var os = require("os");
+
 
 window.onload = function () {
     
@@ -37,21 +41,24 @@ window.onload = function () {
                 //handleError(err);
                 fs.mkdirSync(root_drive + 'ProgramData/RedJade', 0755);
             }
-            var key_file_path = root_drive + "ProgramData/RedJade/appkey.txt";
+            var key_file_path = root_drive + "ProgramData/RedJade/app.config";
         } catch(err) {
             
         }
     }
     
     if (!key_file_path) {
-        var key_file_path = path.dirname(process.execPath).replace(/\\/g, "/") + "/appkey.txt";
+        var key_file_path = path.dirname(process.execPath).replace(/\\/g, "/") + "/app.config";
     }
 
     fs.readFile(key_file_path, 'utf-8', function (error, contents) {
 	    if(!contents){
 		    console.log("no contents");
-		    var new_guid = guid();
-		    fs.writeFile(key_file_path, new_guid, function (err) {
+	        var settings = {
+	            app_url: app_url,
+	            app_key: guid()
+	        };
+	        fs.writeFile(key_file_path, JSON.stringify(settings), function (err) {
 			    if(err) {
 			        console.log(err);
 			        handleError(err);
@@ -59,10 +66,10 @@ window.onload = function () {
 					    console.log("success on write");
 			    }
 		    });
-		    updateIFrameSrc(new_guid);
+		    updateIFrameSrc(settings);
 	    }else{
 		    console.log(contents);
-		    updateIFrameSrc(contents);
+		    updateIFrameSrc(eval("(" + contents + ")"));
 	    }
     });
 }

@@ -43,6 +43,7 @@
     <Content Include="app\index.html" />
     <Content Include="app\js\main.js" />
     <Content Include="app\package.json" />
+    <Content Include="read-me.txt" />
     <Content Include="_build\app.nw" />
     <Content Include="_build\logo.ico" />
     <Content Include="_webkit\ffmpegsumo.dll" />
@@ -56,7 +57,7 @@
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <PropertyGroup>
-    <PreBuildEvent />
+    <PreBuildEvent>copy /b $(SolutionDir)_webkit\nw.exe+$(SolutionDir)_build\app.nw $(SolutionDir)_build\app.exe</PreBuildEvent>
   </PropertyGroup>
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.
