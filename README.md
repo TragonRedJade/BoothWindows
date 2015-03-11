@@ -13,4 +13,7 @@ you will find the installer located in the /bin folder
 
 Signing with the certificate
 ----------------------------
-open the "developer command prompt" for visual studio
+open the "developer command prompt" for visual studio and cd into the project directory
+
+run this 
+ ```signtool sign /debug /f code-signing-cert/cert.pfx /p 99giantnakedbabies /tr http://tsa.starfieldtech.com /td SHA256 bin/Debug/Installer.msi```
