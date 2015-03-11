@@ -1,4 +1,4 @@
-var app_url = "http://surveys.redjade-stage.net";
+var app_url = "https://surveys.redjade.net";
 var fs = require('fs');
 var path = require('path');
 var os = require("os");
@@ -31,6 +31,7 @@ var updateIFrameSrc = function (settings) {
 
 window.onload = function () {
     
+    //What I’m doing now is trying to write to “ProgramData”, and if that fails I try to write to the same folder the app is installed (probably “programfiles”)
     if (os.platform() == "win32") {
         var root_drive = (os.platform == "win32") ? process.cwd().split(path.sep)[0] : "/";
         try {

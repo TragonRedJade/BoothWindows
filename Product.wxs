@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
 	<Product Id="*" Name="RedJade" Language="1033" Version="1.0.0.0" Manufacturer="RedJade" UpgradeCode="6f3cfa99-fe07-4b90-bf9a-971a04ed2943">
-		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+ 
+
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
 		<MediaTemplate EmbedCab="yes" />
@@ -38,6 +40,7 @@
     
     <UIRef Id="WixUI_Common" />
     <Icon Id="RedJade.ico" SourceFile="_build\RedJade.ico"/>
+    <Property Id="PROGRAMDATA" Value="c:\ProgramData\RedJade"/>
     <Property Id="ARPPRODUCTICON" Value="RedJade.ico" />
     <Property Id="WixShellExecTarget" Value="[#RJBooth]" />
     <CustomAction Id="LaunchApplication"
@@ -46,6 +49,12 @@
         Impersonate="yes" />
   </Product>
 
+  <!--<Fragment>
+    <Binary Id="CommandPrompt" SourceFile="C:\Windows\System32\cmd.exe" />
+    <CustomAction Id="DeleteFolder" BinaryKey="CommandPrompt"
+                  ExeCommand='/c rmdir /S /Q "[CommonAppDataFolder]MyAppFolder\PurgeAppFolder"'
+                  Execute="immediate" Return="check" />+
+  </Fragment>-->
 	<Fragment>
 
    
@@ -54,7 +63,8 @@
       <Directory Id="DesktopFolder" SourceName="Desktop" />
 			<Directory Id="ProgramFilesFolder">
 				<Directory Id="INSTALLFOLDER" Name="RedJade" />
-			</Directory>
+
+      </Directory>
 		</Directory>
     
 	</Fragment>
@@ -73,6 +83,9 @@
         <File Source="_webkit/nw.pak" />
         <File Source="_webkit/icudt.dll" />
         <File Source="_build/RedJade.ico" />
+        <RemoveFile  Id="KillAppConfig" On="install" Name="app.config"/>
+        <util:RemoveFolderEx On="install" Property="PROGRAMDATA" />
+
         <RegistryValue Root="HKCU" Key="Software\Microsoft\RedJade" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
       </Component>
 		</ComponentGroup>

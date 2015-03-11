@@ -40,6 +40,7 @@
     <Folder Include="_build" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\exit.html" />
     <Content Include="app\index.html" />
     <Content Include="app\js\main.js" />
     <Content Include="app\package.json" />

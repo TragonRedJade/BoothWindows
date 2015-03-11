@@ -1,7 +1,31 @@
 ﻿<html style="height:100%; margin:0; padding:0;">
     
     <script src="./js/main.js"></script>
+
     <body style="height:100%; margin:0; padding:0;" seamless>
+        <a class="close-button" href="javascript:window.open('exit.html', '_self')">X</a>
         <iframe seamless id="my_iframe" style="height:100%; width:100%;"></iframe>
     </body>
+
+<style>
+    .close-button{
+      padding: 6px;
+      font-family: tahoma;
+      text-decoration: none;
+      color: red;
+      font-weight: bold;
+      display: block;
+      position:absolute;
+      font-size:0;
+      width: 30px;
+      height: 30px;
+      box-sizing:border-box;
+    }
+    .close-button:hover{
+        font-size:16px;
+    }
+    .close-button:visited{
+        color:red;
+    }
+</style>
 </html>
