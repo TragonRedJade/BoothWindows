@@ -46,6 +46,7 @@
     <Content Include="app\js\main.js" />
     <Content Include="app\package.json" />
     <Content Include="code-signing-cert\c3a9045684d29e75.spc" />
+    <Content Include="code-signing-cert\cert.pfx" />
     <Content Include="read-me.txt" />
     <Content Include="_build\app.nw" />
     <Content Include="_build\RedJade.ico" />
