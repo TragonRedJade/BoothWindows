@@ -80,8 +80,18 @@
              Icon="RedJade.ico"
              WorkingDirectory="MergeRedirectFolder" />
         </File>
-        <File Source="_webkit/nw.pak" />
-        <File Source="_webkit/icudt.dll" />
+        <!--<File Source="_webkit/nw.pak" />
+        <File Source="_webkit/icudt.dll" />-->
+        <File Source="_webkit-0.12.0/nw.pak" />
+        <File Source="_webkit-0.12.0/icudtl.dat" />
+        <File Source="_webkit-0.12.0/icudt.dll" />
+        <File Source="_webkit-0.12.0/ffmpegsumo.dll" />
+        <File Source="_webkit-0.12.0/libEGL.dll" />
+        <File Source="_webkit-0.12.0/libGLESv2.dll" />
+        <File Source="_webkit-0.12.0/d3dcompiler_47.dll" />
+        <File Source="_webkit-0.12.0/D3DCompiler_43.dll" />
+        <File Source="_webkit-0.12.0/D3DX9_43.dll" />
+
         <File Source="_build/RedJade.ico" />
         <RemoveFile  Id="KillAppConfig" On="install" Name="app.config"/>
         <util:RemoveFolderEx On="install" Property="PROGRAMDATA" />

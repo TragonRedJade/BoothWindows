@@ -39,6 +39,7 @@
     <Folder Include="code-signing-cert" />
     <Folder Include="_webkit" />
     <Folder Include="_build" />
+    <Folder Include="_webkit-0.12.0\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\exit.html" />
@@ -50,6 +51,16 @@
     <Content Include="read-me.txt" />
     <Content Include="_build\app.nw" />
     <Content Include="_build\RedJade.ico" />
+    <Content Include="_webkit-0.12.0\D3DCompiler_43.dll" />
+    <Content Include="_webkit-0.12.0\d3dcompiler_47.dll" />
+    <Content Include="_webkit-0.12.0\D3DX9_43.dll" />
+    <Content Include="_webkit-0.12.0\ffmpegsumo.dll" />
+    <Content Include="_webkit-0.12.0\icudt.dll" />
+    <Content Include="_webkit-0.12.0\icudtl.dat" />
+    <Content Include="_webkit-0.12.0\libEGL.dll" />
+    <Content Include="_webkit-0.12.0\libGLESv2.dll" />
+    <Content Include="_webkit-0.12.0\nw.exe" />
+    <Content Include="_webkit-0.12.0\nw.pak" />
     <Content Include="_webkit\ffmpegsumo.dll" />
     <Content Include="_webkit\icudt.dll" />
     <Content Include="_webkit\libEGL.dll" />
