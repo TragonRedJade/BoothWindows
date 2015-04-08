@@ -2,7 +2,8 @@ var app_url = "https://surveys.redjade.net";
 var fs = require('fs');
 var path = require('path');
 var os = require("os");
-
+var gui = require('nw.gui');
+var win = gui.Window.get();
 
 var handleError = function (message) {
     var body = document.body || document.getElementsByTagName('body')[0],

@@ -5,7 +5,7 @@ Rename the zip file app.nw
 Move app.nw to "kiosk-installer/_build"
 
 Run this command from the solution directory
-     copy /b _webkit\nw.exe+_build\app.nw _build\app.exe
+     copy /b _webkit\nw.exe+_build\app.nw _build\redjade.exe
 
 build the project
 
@@ -16,4 +16,4 @@ Signing with the certificate
 open the "developer command prompt" for visual studio and cd into the project directory
 
 run this 
- ```signtool sign /debug /f code-signing-cert/cert.pfx /p 99giantnakedbabies /tr http://tsa.starfieldtech.com /td SHA256 bin/Debug/Installer.msi```
+ ```signtool sign /debug /f code-signing-cert/cert.pfx /p 99giantnakedbabies /tr http://tsa.starfieldtech.com /td SHA256 bin/Release/Installer.msi```

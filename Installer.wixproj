@@ -37,42 +37,83 @@
     <Folder Include="app" />
     <Folder Include="app\js\" />
     <Folder Include="code-signing-cert" />
-    <Folder Include="_webkit" />
     <Folder Include="_build" />
-    <Folder Include="_webkit-0.12.0\" />
+    <Folder Include="_webkit" />
+    <Folder Include="_webkit\locales" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\exit.html" />
     <Content Include="app\index.html" />
     <Content Include="app\js\main.js" />
     <Content Include="app\package.json" />
     <Content Include="code-signing-cert\c3a9045684d29e75.spc" />
     <Content Include="code-signing-cert\cert.pfx" />
-    <Content Include="read-me.txt" />
     <Content Include="_build\app.nw" />
+    <Content Include="_build\redjade.exe" />
     <Content Include="_build\RedJade.ico" />
-    <Content Include="_webkit-0.12.0\D3DCompiler_43.dll" />
-    <Content Include="_webkit-0.12.0\d3dcompiler_47.dll" />
-    <Content Include="_webkit-0.12.0\D3DX9_43.dll" />
-    <Content Include="_webkit-0.12.0\ffmpegsumo.dll" />
-    <Content Include="_webkit-0.12.0\icudt.dll" />
-    <Content Include="_webkit-0.12.0\icudtl.dat" />
-    <Content Include="_webkit-0.12.0\libEGL.dll" />
-    <Content Include="_webkit-0.12.0\libGLESv2.dll" />
-    <Content Include="_webkit-0.12.0\nw.exe" />
-    <Content Include="_webkit-0.12.0\nw.pak" />
+    <Content Include="_webkit\d3dcompiler_47.dll" />
     <Content Include="_webkit\ffmpegsumo.dll" />
-    <Content Include="_webkit\icudt.dll" />
+    <Content Include="_webkit\icudtl.dat" />
     <Content Include="_webkit\libEGL.dll" />
     <Content Include="_webkit\libGLESv2.dll" />
+    <Content Include="_webkit\locales\am.pak" />
+    <Content Include="_webkit\locales\ar.pak" />
+    <Content Include="_webkit\locales\bg.pak" />
+    <Content Include="_webkit\locales\bn.pak" />
+    <Content Include="_webkit\locales\ca.pak" />
+    <Content Include="_webkit\locales\cs.pak" />
+    <Content Include="_webkit\locales\da.pak" />
+    <Content Include="_webkit\locales\de.pak" />
+    <Content Include="_webkit\locales\el.pak" />
+    <Content Include="_webkit\locales\en-GB.pak" />
+    <Content Include="_webkit\locales\en-US.pak" />
+    <Content Include="_webkit\locales\es-419.pak" />
+    <Content Include="_webkit\locales\es.pak" />
+    <Content Include="_webkit\locales\et.pak" />
+    <Content Include="_webkit\locales\fa.pak" />
+    <Content Include="_webkit\locales\fi.pak" />
+    <Content Include="_webkit\locales\fil.pak" />
+    <Content Include="_webkit\locales\fr.pak" />
+    <Content Include="_webkit\locales\gu.pak" />
+    <Content Include="_webkit\locales\hi.pak" />
+    <Content Include="_webkit\locales\hr.pak" />
+    <Content Include="_webkit\locales\hu.pak" />
+    <Content Include="_webkit\locales\id.pak" />
+    <Content Include="_webkit\locales\it.pak" />
+    <Content Include="_webkit\locales\iw.pak" />
+    <Content Include="_webkit\locales\ja.pak" />
+    <Content Include="_webkit\locales\kn.pak" />
+    <Content Include="_webkit\locales\ko.pak" />
+    <Content Include="_webkit\locales\lt.pak" />
+    <Content Include="_webkit\locales\lv.pak" />
+    <Content Include="_webkit\locales\ml.pak" />
+    <Content Include="_webkit\locales\mr.pak" />
+    <Content Include="_webkit\locales\ms.pak" />
+    <Content Include="_webkit\locales\nl.pak" />
+    <Content Include="_webkit\locales\no.pak" />
+    <Content Include="_webkit\locales\pl.pak" />
+    <Content Include="_webkit\locales\pt-BR.pak" />
+    <Content Include="_webkit\locales\pt-PT.pak" />
+    <Content Include="_webkit\locales\ro.pak" />
+    <Content Include="_webkit\locales\ru.pak" />
+    <Content Include="_webkit\locales\sk.pak" />
+    <Content Include="_webkit\locales\sl.pak" />
+    <Content Include="_webkit\locales\sr.pak" />
+    <Content Include="_webkit\locales\sv.pak" />
+    <Content Include="_webkit\locales\sw.pak" />
+    <Content Include="_webkit\locales\ta.pak" />
+    <Content Include="_webkit\locales\te.pak" />
+    <Content Include="_webkit\locales\th.pak" />
+    <Content Include="_webkit\locales\tr.pak" />
+    <Content Include="_webkit\locales\uk.pak" />
+    <Content Include="_webkit\locales\vi.pak" />
+    <Content Include="_webkit\locales\zh-CN.pak" />
+    <Content Include="_webkit\locales\zh-TW.pak" />
     <Content Include="_webkit\nw.exe" />
     <Content Include="_webkit\nw.pak" />
-    <Content Include="_webkit\nwsnapshot.exe" />
-    <Content Include="_build\app.exe" />
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <PropertyGroup>
-    <PreBuildEvent>copy /b $(SolutionDir)_webkit\nw.exe+$(SolutionDir)_build\app.nw $(SolutionDir)_build\app.exe</PreBuildEvent>
+    <PreBuildEvent />
   </PropertyGroup>
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.
