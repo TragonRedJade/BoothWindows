@@ -1,3 +1,9 @@
+Dependancies
+---------------------
+https://github.com/nwjs/nw.js?hc_location=ufi
+http://wixtoolset.org/
+
+
 Creating the installer
 ----------------------
 ﻿Create a zip file with the contents of the "kiosk-installer/app" folder
