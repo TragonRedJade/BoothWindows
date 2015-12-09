@@ -1,3 +1,8 @@
+
+Notes
+---------------------
+ffmpegsumo.dll is custom build, and is not the one included with node webkit. The default driver does not support .mp4 video.  Do not replace this file updates from node webkit.
+
 Dependancies
 ---------------------
 https://github.com/nwjs/nw.js?hc_location=ufi
