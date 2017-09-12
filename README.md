@@ -23,9 +23,14 @@ build the project
 
 you will find the installer located in the /bin folder
 
+Creating the certificate
+--------------------------
+Use openssl to export
+```openssl pkcs12 -export -out domain.name.pfx -inkey domain.name.key -in domain.name.crt```
+
 Signing with the certificate
 ----------------------------
 open the "developer command prompt" for visual studio and cd into the project directory
 
 run this 
- ```signtool sign /debug /f code-signing-cert/cert.pfx /p 99giantnakedbabies /tr http://tsa.starfieldtech.com /td SHA256 bin/Release/Installer.msi```
+ ```signtool sign /debug /f code-signing-cert/redjade.pfx /p WaBp8fF63cTF28pn /tr http://tsa.starfieldtech.com /td SHA256 bin/Release/Installer.msi```

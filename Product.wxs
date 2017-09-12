@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
-	<Product Id="ff5a1e83-9d22-4393-85ea-f70743e6b9d4" Name="RedJade" Language="1033" Version="1.0.0.2" Manufacturer="RedJade" UpgradeCode="ff5a1e81-9d22-4393-85ea-f70743e6b9d1">
+	<Product Id="ff5a1e83-9d22-4393-85ea-f70743e6b9d4" Name="RedJade" Language="1033" Version="1.0.79.3" Manufacturer="RedJade" UpgradeCode="ff5a1e81-9d22-4393-85ea-f70743e6b9d1">
     
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
@@ -8,12 +8,17 @@
       <UpgradeVersion Property='OLDVERSIONFOUND' OnlyDetect="no" IncludeMinimum='no' Minimum='0.0.0.0' />
     </Upgrade>
 
-		<MediaTemplate EmbedCab="yes" />
 
-		<Feature Id="ProductFeature" Title="Installer" Level="1">
-			<ComponentGroupRef Id="ProductComponents" />
-      <ComponentGroupRef Id="LocaleComponents" />
-		</Feature>
+<MediaTemplate EmbedCab="yes" />
+
+
+<Feature Id="ProductFeature" Title="Installer" Level="1">
+
+	<ComponentGroupRef Id="ProductComponents" />
+  <ComponentGroupRef Id="LocaleComponents" />
+  <ComponentGroupRef Id="SwiftshaderComponents" />
+
+</Feature>
     <UI Id="UserInterface">
       <Property Id="WIXUI_INSTALLDIR" Value="TARGETDIR" />
       <Property Id="WixUI_Mode" Value="Custom" />
@@ -42,7 +47,7 @@
 
     
     <UIRef Id="WixUI_Common" />
-    <Icon Id="RedJade.ico" SourceFile="_build\RedJade.ico"/>
+    <Icon Id="RedJade.ico" SourceFile="app\RedJade.ico"/>
     <Property Id="PROGRAMDATA" Value="c:\ProgramData\RedJade"/>
     <Property Id="ARPPRODUCTICON" Value="RedJade.ico" />
     <Property Id="WixShellExecTarget" Value="[#RJBooth]" />
@@ -67,23 +72,28 @@
 
    
     
-		<Directory Id="TARGETDIR" Name="SourceDir">
+
+<Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="DesktopFolder" SourceName="Desktop" />
-			<Directory Id="ProgramFilesFolder">
+
+	<Directory Id="ProgramFilesFolder">
         <Directory Id="INSTALLFOLDER" Name="RedJade" >
           <Directory Id="LOCALESFOLDER" Name="locales" />
-          </Directory>
+          <Directory Id="SWIFTSHADERFOLDER" Name="swiftshader" />
+        </Directory>
 
       </Directory>
-		</Directory>
+
+</Directory>
     
 	</Fragment>
 
 	<Fragment>
-		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+
+<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
       
       <Component Guid="a7646cd8-a27c-4898-83fc-016b58e13aab" Id="redjade_component">
-        <File Id="RedJade" Source="_build/redjade.exe" >
+        <File Id="RedJade" Name="RedJade.exe" Source="_webkit/nw.exe" >
           <Shortcut
              Id="DesktopShortcut"
              Directory="DesktopFolder"
@@ -91,26 +101,39 @@
              Icon="RedJade.ico"
              WorkingDirectory="MergeRedirectFolder" />
         </File>
-        <File Source="_webkit/nw.pak" />
-        <File Source="_webkit/icudtl.dat" />
-        <File Source="_webkit/ffmpegsumo.dll" />
-        <File Source="_webkit/libEGL.dll" />
-        <File Source="_webkit/libGLESv2.dll" />
-        <File Source="_webkit/d3dcompiler_47.dll" />
-
-        <File Source="_build/RedJade.ico" />
-        
+          <File Source="app/package.json" />
+          <File Source="app/index.html" />
+          <File Source="app/main.js" />
+          <File Source="app/RedJade.ico" />
+          <File Source="app/RedJade.png" />
+          <File Source="_webkit/d3dcompiler_47.dll" />
+          <File Source="_webkit/node.dll" />
+          <File Source="_webkit/nw.dll" />
+          <File Source="_webkit/nw_100_percent.pak" />
+          <File Source="_webkit/nw_elf.dll" />
+          <File Source="_webkit/ffmpeg.dll" />
+          <File Source="_webkit/icudtl.dat" />
+          <File Source="_webkit/natives_blob.bin" />
+          <File Source="_webkit/notification_helper.exe" />
+          <File Source="_webkit/nw_200_percent.pak" />
+          <File Source="_webkit/resources.pak" />
+          <File Source="_webkit/v8_context_snapshot.bin" />                  
         
         <!--<RemoveFile  Id="KillAppConfig" On="install" Name="app.config"/>-->
         <!--<util:RemoveFolderEx On="install" Property="PROGRAMDATA" />-->
 
         <RegistryValue Root="HKCU" Key="Software\Microsoft\RedJade" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
       </Component>
-		</ComponentGroup>
+
+</ComponentGroup>
+    <ComponentGroup Id="SwiftshaderComponents" Directory="SWIFTSHADERFOLDER">
+      <Component Guid="e558b94e-940f-42a7-b506-0624f467d364" Id="swiftshader_component">
+        <File Source="_webkit/swiftshader/libEGL.dll" />
+        <File Source="_webkit/swiftshader/libGLESv2.dll" />
+      </Component>
+    </ComponentGroup>
     <ComponentGroup Id="LocaleComponents" Directory="LOCALESFOLDER">
-
       <Component Guid="a7646cd8-a27c-4898-83fc-016b58e14aab" Id="locals_component">
-
         <File Source="_webkit/locales/am.pak" />
         <File Source="_webkit/locales/ar.pak" />
         <File Source="_webkit/locales/bg.pak" />
@@ -130,12 +153,12 @@
         <File Source="_webkit/locales/fil.pak" />
         <File Source="_webkit/locales/fr.pak" />
         <File Source="_webkit/locales/gu.pak" />
+        <File Source="_webkit/locales/he.pak" />
         <File Source="_webkit/locales/hi.pak" />
         <File Source="_webkit/locales/hr.pak" />
         <File Source="_webkit/locales/hu.pak" />
         <File Source="_webkit/locales/id.pak" />
         <File Source="_webkit/locales/it.pak" />
-        <File Source="_webkit/locales/iw.pak" />
         <File Source="_webkit/locales/ja.pak" />
         <File Source="_webkit/locales/kn.pak" />
         <File Source="_webkit/locales/ko.pak" />
@@ -144,8 +167,8 @@
         <File Source="_webkit/locales/ml.pak" />
         <File Source="_webkit/locales/mr.pak" />
         <File Source="_webkit/locales/ms.pak" />
+        <File Source="_webkit/locales/nb.pak" />
         <File Source="_webkit/locales/nl.pak" />
-        <File Source="_webkit/locales/no.pak" />
         <File Source="_webkit/locales/pl.pak" />
         <File Source="_webkit/locales/pt-BR.pak" />
         <File Source="_webkit/locales/pt-PT.pak" />
@@ -164,6 +187,59 @@
         <File Source="_webkit/locales/vi.pak" />
         <File Source="_webkit/locales/zh-CN.pak" />
         <File Source="_webkit/locales/zh-TW.pak" />
+        <File Source="_webkit/locales/am.pak.info" />
+        <File Source="_webkit/locales/ar.pak.info" />
+        <File Source="_webkit/locales/bg.pak.info" />
+        <File Source="_webkit/locales/bn.pak.info" />
+        <File Source="_webkit/locales/ca.pak.info" />
+        <File Source="_webkit/locales/cs.pak.info" />
+        <File Source="_webkit/locales/da.pak.info" />
+        <File Source="_webkit/locales/de.pak.info" />
+        <File Source="_webkit/locales/el.pak.info" />
+        <File Source="_webkit/locales/en-GB.pak.info" />
+        <File Source="_webkit/locales/en-US.pak.info" />
+        <File Source="_webkit/locales/es.pak.info" />
+        <File Source="_webkit/locales/es-419.pak.info" />
+        <File Source="_webkit/locales/et.pak.info" />
+        <File Source="_webkit/locales/fa.pak.info" />
+        <File Source="_webkit/locales/fi.pak.info" />
+        <File Source="_webkit/locales/fil.pak.info" />
+        <File Source="_webkit/locales/fr.pak.info" />
+        <File Source="_webkit/locales/gu.pak.info" />
+        <File Source="_webkit/locales/he.pak.info" />
+        <File Source="_webkit/locales/hi.pak.info" />
+        <File Source="_webkit/locales/hr.pak.info" />
+        <File Source="_webkit/locales/hu.pak.info" />
+        <File Source="_webkit/locales/id.pak.info" />
+        <File Source="_webkit/locales/it.pak.info" />
+        <File Source="_webkit/locales/ja.pak.info" />
+        <File Source="_webkit/locales/kn.pak.info" />
+        <File Source="_webkit/locales/ko.pak.info" />
+        <File Source="_webkit/locales/lt.pak.info" />
+        <File Source="_webkit/locales/lv.pak.info" />
+        <File Source="_webkit/locales/ml.pak.info" />
+        <File Source="_webkit/locales/mr.pak.info" />
+        <File Source="_webkit/locales/ms.pak.info" />
+        <File Source="_webkit/locales/nb.pak.info" />
+        <File Source="_webkit/locales/nl.pak.info" />
+        <File Source="_webkit/locales/pl.pak.info" />
+        <File Source="_webkit/locales/pt-BR.pak.info" />
+        <File Source="_webkit/locales/pt-PT.pak.info" />
+        <File Source="_webkit/locales/ro.pak.info" />
+        <File Source="_webkit/locales/ru.pak.info" />
+        <File Source="_webkit/locales/sk.pak.info" />
+        <File Source="_webkit/locales/sl.pak.info" />
+        <File Source="_webkit/locales/sr.pak.info" />
+        <File Source="_webkit/locales/sv.pak.info" />
+        <File Source="_webkit/locales/sw.pak.info" />
+        <File Source="_webkit/locales/ta.pak.info" />
+        <File Source="_webkit/locales/te.pak.info" />
+        <File Source="_webkit/locales/th.pak.info" />
+        <File Source="_webkit/locales/tr.pak.info" />
+        <File Source="_webkit/locales/uk.pak.info" />
+        <File Source="_webkit/locales/vi.pak.info" />
+        <File Source="_webkit/locales/zh-CN.pak.info" />
+        <File Source="_webkit/locales/zh-TW.pak.info" />
       </Component>
     </ComponentGroup>
 	</Fragment>

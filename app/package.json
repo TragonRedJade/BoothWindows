@@ -1,10 +1,13 @@
-﻿{
+{
 	"name": "RedJade",
 	"main": "index.html",
-	"window": {
-		"frame": false,
-		"toolbar": false,
-		"fullscreen": true,
-		"title": "RedJade"
-	}
+  "window": {
+    "icon":  "RedJade.png",
+    "frame": false,
+    "toolbar": false,
+    "kiosk": true,
+    "fullscreen": true,
+    "title": "RedJade"
+
+  }
 }

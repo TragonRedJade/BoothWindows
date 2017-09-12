@@ -1,6 +1,11 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 
+#automatically compress dll files to sneak in under 100mb limit
+#git config filter.compress.clean gzip
+#git config filter.compress.smudge gzip -d
+#/_webkit/*.dll filter=compress
+
 # Custom for Visual Studio
 *.cs     diff=csharp
 *.sln    merge=union
