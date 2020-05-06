@@ -3,21 +3,35 @@ Notes
 ---------------------
 ffmpegsumo.dll is custom build, and is not the one included with node webkit. The default driver does not support .mp4 video.  Do not replace this file updates from node webkit.
 
-Dependancies
+
+Dependencies
 ---------------------
 https://github.com/nwjs/nw.js?hc_location=ufi
 
+Windows only, use parallels on OSX:
 http://wixtoolset.org/
+
 
 
 Creating the installer
 ----------------------
-﻿Create a zip file with the contents of the "kiosk-installer/app" folder
+Create a zip file with the contents of the /app folder
+
 Rename the zip file app.nw
-Move app.nw to "kiosk-installer/_build"
+
+Move app.nw to /_build
+
+```
+#!/bin/bash
+zip app.nw app
+mv app.nw _build/
+```
 
 Run this command from the solution directory
-     copy /b _webkit\nw.exe+_build\app.nw _build\redjade.exe
+
+```
+cp _webkit\nw.exe+_build\app.nw _build\redjade.exe
+```
 
 build the project
 
